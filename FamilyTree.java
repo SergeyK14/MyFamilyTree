@@ -15,7 +15,7 @@ public class FamilyTree {
         humans = new ArrayList<>();
     }
     
-    public void addHumans (Human human){
+    public void addHuman (Human human){
         humans.add (human);
     }
 
