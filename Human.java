@@ -1,5 +1,6 @@
 package Project_MyFamilyTree;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +50,10 @@ public class Human {
     public void Childrens (List<Human> childrens){
         childrens = new ArrayList<>();
     }
-    public void addChildrens (Human human){
+    public void addChildren (Human human){
         childrens.add (human);
     }
-    public String getChildrens(){
+    public String getChildrens(List <Human> childrens){
         StringBuilder stringBuilder = new StringBuilder();
         for(Human human: childrens){
             stringBuilder.append(human.getName());
@@ -62,6 +63,8 @@ public class Human {
         return stringBuilder.toString();
     }
 
+    
+
     public Human(String name, String birthday, Gender gender, Human father, Human mother, List<Human> childrens){
         this.name = name;
         this.birthday = birthday;
@@ -69,9 +72,15 @@ public class Human {
         this.father = father;
         this.mother = mother;
         this.childrens = childrens;
-        id = glodal_id++;
+        id = glodal_id++;    
+
+    }
+    public Human(String name, String birthday, Gender gender){
+        this(name, birthday, gender);
     }
 
+    public Human(){
+    }
     // public Human(String name, String birthday, Gender gender, Human father, Human mother){
     //     this.name = name;
     //     this.birthday = birthday;
@@ -87,15 +96,7 @@ public class Human {
     //     this.childrens = childrens;
     // }
 
-    public Human(String name, String birthday, Gender gender){
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-    }
-
-    public Human(){
-    }
-
+    
 
     @Override
     public String toString() {
