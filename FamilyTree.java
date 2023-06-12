@@ -1,18 +1,23 @@
 package Project_MyFamilyTree;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements Serializable{
 
     public Human human;
-    public List<Human> humans;
+    private List<Human> humans;
     
     
    
 
     public FamilyTree (){
         humans = new ArrayList<>();
+    }
+
+    public FamilyTree (List<Human> humans){
+        this.humans = humans;
     }
     
     public void addHuman (Human human){
