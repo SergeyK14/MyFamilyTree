@@ -1,12 +1,14 @@
 package Project_MyFamilyTree;
 
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human {
+public class Human implements Serializable{
     public String name;
-    private String birthday;
+    private LocalDate birthday;
     private Gender gender;
     public Human father;
     public Human mother;
@@ -23,10 +25,10 @@ public class Human {
     public String getName (){
         return name;
     }
-    public void setBirthday (String birthday){
+    public void setBirthday (LocalDate birthday){
         this.birthday = birthday;
     } 
-    public String getBirthday (){
+    public LocalDate getBirthday (){
         return birthday;
     }
     public void setGender (Gender gender){
@@ -47,7 +49,7 @@ public class Human {
     public Human getMother (){
         return mother;
     }
-    public void Childrens (List<Human> childrens){
+    public void Childrens (){
         childrens = new ArrayList<>();
     }
     public void addChildren (Human human){
@@ -65,18 +67,19 @@ public class Human {
 
     
 
-    public Human(String name, String birthday, Gender gender, Human father, Human mother, List<Human> childrens){
+    public Human(String name, LocalDate birthday, Gender gender, Human father, Human mother, List<Human> childrens){
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
         this.father = father;
         this.mother = mother;
-        this.childrens = childrens;
+        //this.childrens = childrens;
+        childrens = new ArrayList<>();
         id = glodal_id++;    
-
     }
-    public Human(String name, String birthday, Gender gender){
-        this(name, birthday, gender);
+    
+    public Human(String name, LocalDate birthday, Gender gender){
+        this(name, birthday, gender, null, null,null);
     }
 
     public Human(){
@@ -106,6 +109,6 @@ public class Human {
         + "Пол: " + gender + '\n'
         + "Отец: " + father.getName() + ", " + father.getBirthday() + '\n'
         + "Mать: " + mother.getMother() + ", " + mother.getBirthday() + '\n'
-        + "Дети: " + childrens.getChildrens();
+        + "Дети: " + getChildrens(childrens);
     }
 }
