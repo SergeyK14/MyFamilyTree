@@ -1,5 +1,6 @@
 package Project_MyFamilyTree;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +41,7 @@ public class Main {
         humans.findHuman ("Иванов Сергей Максимович");
     
         System.out.println (humans.getHuman ());
+
+        SortHuman.sortByName(humans);
     }
 }
