@@ -2,27 +2,33 @@ package Project_MyFamilyTree;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class FileHendler implements Saveable{
-    Human human;
-    FamilyTree humans;
-    
-    FileHendler fileHendler = new FileHendler();
    
-    public void saveMethod() {
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("FamilyTree.out"));
-        objectOutputStream.writeObject(humans);
-        objectOutputStream.writeObject(human_1);
-        objectOutputStream.close();
+    @Override
+    public boolean saveMethod(Serializable serializable, String filesave) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filesave))){
+            objectOutputStream.writeObject(serializable);
+            return true;
         }
-    public void readMethod(){
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("FamilyTree.out"));
-        FamilyTree humans_Restored = (FamilyTree) objectInputStream.readObject();
-        Human human1_Restored = (Human) objectInputStream.readObject();
-        objectInputStream.close();
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Object readMethod(String filesave) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filesave))){
+            return objectInputStream.readObject();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        return null;
+        }
     }
 }
 

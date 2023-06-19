@@ -115,4 +115,9 @@ public class Human implements Serializable, Comparable<Human>{
     public int compareTo(Human o) {
         return name.compareTo(o.name);
     }
+
+    @Override
+    public int compareTo(Human o) {
+        return birthday.compareTo(o.birthday);
+    }
 }

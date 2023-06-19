@@ -1,6 +1,7 @@
 package Project_MyFamilyTree;
 
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        String filesave = "C:\Users\sc23\Documents\Учеба Разработчик\Практикум\ООП\Project_FamilyTree\FamilyTree.txt";
+        Saveable saveable = new FileHendler();
+        //FamilyTree humans = (FamilyTree) saveable.readMethod(filesave);
+
+    
         Human human_1 = new Human ("Иванов Сергей Максимович", LocalDate.of(1998, 1, 11), Gender.man);
         Human human_2 = new Human("Иванов Максим Константинович", LocalDate.of(1959, 6, 8), Gender.man);
         Human human_3 = new Human("Иванова Лариса Петровна", LocalDate.of(1961, 9, 16), Gender.woman);
@@ -42,6 +48,9 @@ public class Main {
     
         System.out.println (humans.getHuman ());
 
-        SortHuman.sortByName(humans);
+        humans.sortByName();
+        humans.sortByAge();
+
+        saveable.saveMethod(humans, filesave);
     }
 }

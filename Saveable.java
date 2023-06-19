@@ -1,6 +1,8 @@
 package Project_MyFamilyTree;
 
+import java.io.Serializable;
+
 public interface Saveable {
-    public void saveMethod();
-    public void readMethod();
+    public boolean saveMethod(Serializable serializable, String filesave);
+    public Object readMethod(String filesave);
 }
